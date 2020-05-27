@@ -118,12 +118,12 @@
 	#include "loadout/loadout_xeno.dm"
 	#include "loadout/~defines.dm"
 
-	#include "sierra-1.dmm"
-	#include "sierra-2.dmm"
-	#include "sierra-3.dmm"
-	#include "sierra-4.dmm"
-	#include "sierra-5.dmm"
-	#include "../away/empty.dmm"
+	//#include "sierra-1.dmm"
+	//#include "sierra-2.dmm"
+	//#include "sierra-3.dmm"
+	//#include "sierra-4.dmm"
+	//#include "sierra-5.dmm"
+	//#include "../away/empty.dmm"
 
 	#include "../away_inf/yacht/yacht.dm"
 	#include "../away_inf/mining/mining.dm"
@@ -145,7 +145,7 @@
 	#include "../away/slavers/slavers_base.dm"
 	#include "../away/voxship/voxship.dm"
 
-	#define using_map_DATUM /datum/map/sierra
+	//#define using_map_DATUM /datum/map/sierra
 
 #elif !defined(MAP_OVERRIDE)
 
