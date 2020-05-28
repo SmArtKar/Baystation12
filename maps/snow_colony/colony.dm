@@ -5,9 +5,9 @@
 
 	#include "colony_define.dm"
 
-	#include "colony1-peak.dmm"
-	#include "colony2-surface.dmm"
-	#include "colony3-ground.dmm"
+	#include "colony-1.dmm"
+	#include "colony-2.dmm"
+	#include "colony-3.dmm"
 
 	#define using_map_DATUM /datum/map/colony
 
