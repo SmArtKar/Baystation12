@@ -9,6 +9,7 @@
 	)
 	sprites = list(
 		"Droid" = "droid-science",
+//cuz flying		"Ver 06" = "wer6-Research" //inf
 	)
 	equipment = list(
 		/obj/item/device/flash,

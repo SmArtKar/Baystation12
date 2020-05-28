@@ -144,8 +144,6 @@
 	blood_volume =         1200
 	spawns_with_stack =       0
 
-	spawn_flags =             SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_IS_WHITELISTED//INF
-
 	pixel_offset_x =        -4
 	antaghud_offset_y =      18
 	antaghud_offset_x =      4
@@ -236,4 +234,3 @@
 /datum/species/nabber/monarch/queen
 	name = SPECIES_MONARCH_QUEEN
 	name_plural = "Monarch Serpentid Queens"
-	spawn_flags =             SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_IS_WHITELISTED//INF

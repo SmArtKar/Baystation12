@@ -51,7 +51,7 @@
 	stack_type = /obj/item/stack/material/concrete
 	integrity = 400
 	melting_point = 6000
-	icon_base = "metal"
+	icon_base = "stone"
 	icon_reinf = "reinf_over"
 	icon_colour = COLOR_CONCRETE
 	explosion_resistance = 25

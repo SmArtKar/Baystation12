@@ -8,6 +8,7 @@
 		"Basic" = "JanBot2",
 		"Mopbot"  = "janitorrobot",
 		"Mop Gear Rex" = "mopgearrex",
+//cuz flying		"Ver 06" = "wer6-janitor",//inf
 		"Motile" = "motile"//inf
 	)
 	equipment = list(

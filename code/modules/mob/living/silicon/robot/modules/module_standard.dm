@@ -5,6 +5,7 @@
 		"Basic" = "robot_old",
 		"Android" = "droid",
 		"Default" = "robot",
+//cuz flying		"Ver 06" = "wer6-Standard", //inf
 		"Motile" = "motile"
 	)
 	equipment = list(

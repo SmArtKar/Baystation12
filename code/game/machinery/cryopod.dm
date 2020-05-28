@@ -148,10 +148,9 @@
 
 	var/base_icon_state = "body_scanner_0"
 	var/occupied_icon_state = "body_scanner_1"
-	var/on_store_message = "погружается в криосон."
+	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
-	var/on_enter_occupant_message = "Вы чувствуете, как прохладный воздух окружает Вас. \
-	Тело постепенно немеете, пока чувства затупляются..."
+	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
@@ -188,10 +187,9 @@
 	icon_state = "pod_0"
 	base_icon_state = "pod_0"
 	occupied_icon_state = "pod_1"
-	on_store_message = "переходит в хранилище синтетиков."
+	on_store_message = "has entered robotic storage."
 	on_store_name = "Robotic Storage Oversight"
-	on_enter_occupant_message = "Хранилище передает Вам сигнал отключения. \
-	Ваши системы начинают постепенно отключаться, переходя в режим пониженного энергопотребления..."
+	on_enter_occupant_message = "The storage unit broadcasts a sleep signal to you. Your systems start to shut down, and you enter low-power mode."
 	allow_occupant_types = list(/mob/living/silicon/robot)
 //	disallow_occupant_types = list(/mob/living/silicon/robot/drone)
 	applies_stasis = 0
@@ -570,8 +568,7 @@
 	if(occupant.client)
 		if(!silent)
 			to_chat(occupant, "<span class='notice'>[on_enter_occupant_message]</span>")
-			to_chat(occupant, "<span class='notice'><b>Если Вы выйдете из тела или закроете игру, \
-			то Ваш персонаж будет немедленно убран из раунда в крио-сон.</b></span>")
+			to_chat(occupant, "<span class='notice'><b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b></span>")
 		occupant.client.perspective = EYE_PERSPECTIVE
 		occupant.client.eye = src
 	occupant.forceMove(src)
