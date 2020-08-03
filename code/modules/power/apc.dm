@@ -136,7 +136,10 @@
 	var/global/list/status_overlays_environ
 	var/autoname = 1
 
+
 	var/hp = 100 //INFINITY
+	var/obj/item/weapon/clockwork/integration_cog/integration_cog //INF
+
 /obj/machinery/power/apc/updateDialog()
 	if (stat & (BROKEN|MAINT))
 		return
@@ -249,7 +252,8 @@
 				to_chat(user, "Electronics installed but not wired.")
 			else /* if (!has_electronics && !terminal) */
 				to_chat(user, "There is no electronics nor connected wires.")
-
+			if(user.Adjacent(src) && integration_cog) //INF
+				to_chat(user, "<span class='warning'>[src]'s innards have been replaced by strange brass machinery!</span>") //INF
 		else
 			if (stat & MAINT)
 				to_chat(user, "The cover is closed. Something wrong with it: it doesn't work.")
@@ -261,6 +265,9 @@
 //[/INF]
 			else
 				to_chat(user, "The cover is closed.")
+
+		if(integration_cog && is_servant_of_ratvar(user)) //INF
+			to_chat(user, "<span class='brass'>There is an integration cog installed!</span>") //INF
 
 
 // update the APC icon to show the three base states
@@ -486,6 +493,20 @@ INF */
 						new /obj/item/weapon/module/power_control(loc)
 				return TRUE
 
+			//[INF]
+
+			else if(integration_cog)
+				user.visible_message("<span class='notice'>[user] starts prying [integration_cog] from [src]...</span>", \
+				"<span class='notice'>You painstakingly start tearing [integration_cog] out of [src]'s guts...</span>")
+				if(do_after(user, 100))
+					user.visible_message("<span class='notice'>[user] destroys [integration_cog] in [src]!</span>", \
+					"<span class='notice'>[integration_cog] comes free with a clank and snaps in two as the machinery returns to normal!</span>")
+					playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
+					QDEL_NULL(integration_cog)
+				return
+
+			//[/INF]
+
 			else if (opened != 2) //cover isn't removed
 				opened = 0 // Closes panel.
 				user.visible_message(SPAN_NOTICE("\The [user] pries the cover shut on \the [src]."), SPAN_NOTICE("You pry the cover shut."))
@@ -704,6 +725,38 @@ INF */
 			queue_icon_update()
 		return TRUE
 //[/INF]
+
+	//[INF]
+	else if(istype(W, /obj/item/weapon/clockwork/integration_cog) && is_servant_of_ratvar(user))
+		if(integration_cog)
+			to_chat(user, "<span class='warning'>This APC already has a cog.</span>")
+			return
+		if(!opened)
+			user.visible_message("<span class='warning'>[user] slices [src]'s cover lock, and it swings wide open!</span>", \
+			"<span class='alloy'>You slice [src]'s cover lock apart with [W], and the cover swings open.</span>")
+			opened = TRUE
+			update_icon()
+			return
+		else
+			user.visible_message("<span class='warning'>[user] presses [W] into [src]!</span>", \
+			"<span class='alloy'>You hold [W] in place within [src], and it slowly begins to warm up...</span>")
+			playsound(src, 'infinity/sound/machines/click.ogg', 50, TRUE)
+			if(!do_after(user, 70, target = src))
+				return
+			user.visible_message("<span class='warning'>[user] installs [W] in [src]!</span>", \
+			"<span class='alloy'>Replicant alloy rapidly covers the APC's innards, replacing the machinery.</span><br>\
+			<span class='brass'>This APC will now passively provide power for the cult!</span>")
+			playsound(user, 'infinity/sound/machines/clockcult/integration_cog_install.ogg', 50, TRUE)
+			user.unEquip(W)
+			W.forceMove(src)
+			integration_cog = W
+			START_PROCESSING(SSobj, W)
+			playsound(src, 'infinity/sound/machines/clockcult/steam_whoosh.ogg', 50, FALSE)
+			opened = FALSE
+			locked = FALSE
+			update_icon()
+			return
+	//[/INF]
 
 	if((. = ..())) // Further interactions are low priority attack stuff.
 		return

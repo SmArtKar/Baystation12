@@ -135,6 +135,14 @@
 		SSstatistics.add_field("cyborg_birth",1)
 		callHook("borgify", list(O))
 		O.Namepick()
+
+		//[INF]
+
+		if(istype(W, /obj/item/organ/internal/posibrain/soul_vessel))
+			O.change_clockwork()
+
+        //[/INF]
+
 		qdel(src)
 
 	else if(istype(W, /obj/item/weapon/pen))
